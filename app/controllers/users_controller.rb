@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   before_filter :require_user, :only => [:show, :edit, :update]
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
-  # GET /users action
+  # GET /users
   def index
     @users = User.all
   end
@@ -43,7 +43,7 @@ class UsersController < ApplicationController
       else
         render action: 'edit'
       end
-    #end 
+    #end
   end
 
   # DELETE /users/1
