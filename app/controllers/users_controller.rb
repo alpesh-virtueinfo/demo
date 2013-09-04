@@ -43,7 +43,7 @@ class UsersController < ApplicationController
       else
         render action: 'edit'
       end
-    #end
+    #end 
   end
 
   # DELETE /users/1
