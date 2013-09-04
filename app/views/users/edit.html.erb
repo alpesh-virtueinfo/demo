@@ -1,0 +1,22 @@
+<h1>Edit My Account</h1>
+
+<%= form_for @user, :url => user_path do |f| %>
+    <% if @user.errors.any? %>
+        <ul>
+        <% @user.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+    <% end %>
+    <%= f.label :first_name %><br />
+    <%= f.text_field :first_name %><br />
+    <br />
+    <%= f.label :last_name %><br />
+    <%= f.text_field :last_name %><br />
+    <br />
+    <%= f.label :email %><br />
+    <%= f.text_field :email %><br />
+    <%= f.submit "Update" %>
+<% end %>
+
+<br /><%= link_to "My Profile", user_path %>
