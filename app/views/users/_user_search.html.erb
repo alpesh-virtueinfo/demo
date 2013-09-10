@@ -22,7 +22,7 @@
   	<% end %>   		
    
     <div class="controls">
-      <%= f.submit t("general.search"), :class => 'btn btn-primary', :id => 'search_button_id' %>
+      <%= f.submit 'search', :class => 'btn btn-primary', :id => 'search_button_id' %>
       <span data-no-turbolink><%= link_to 'Cancel', user_search_box_path(false, params[:model], true), :class => 'btn', :remote => true %></span>
     </div>
     

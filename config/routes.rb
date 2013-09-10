@@ -3,6 +3,8 @@ Demo::Application.routes.draw do
   resources :users
   resources :user_session
   resources :password_resets
+  
+  get '/user_search_box/:toggle/:model/:pm' => 'users#user_search_box', :as => :user_search_box
   #get 'user_session/login'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

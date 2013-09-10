@@ -1,34 +1,18 @@
-<html>
-<body>
-  <h1>Listing Users</h1>
-    <table>
-      <% if !current_user %>
-        <tr>
-            <th><h2>Please login</h2></th>
-        </tr>
-      <% else %>
-          <tr>
-            <th>First name</th>
-            <th>Last name</th>
-            <th>Username</th>
-            <th>Email</th>
-            <th>&nbsp;</th>
-          </tr>
+<%- model_class = User -%>
 
-          <% @users.each do |user| %>
-            <tr>
-              <td><%= user.first_name %></td>
-              <td><%= user.last_name %></td>
-              <td><%= user.login %></td>
-              <td><%= user.email %></td>
-              <td><%= link_to "Show", user %></td>
-              <td><%= link_to "Edit", edit_user_path(user) %></td>
-              <td><%= link_to "Delete", user_path(user), method: :delete, data: { confirm: 'Are you sure?' } %></td>
-            </tr>
-          <% end %>
-      <% end %>
-    </table>
+<%= hidden_field_tag :direction, params[:direction] %>
+<%= hidden_field_tag :sort, params[:sort] %>
 
-</body>
-</html>
+<div class="page-header">
+  <h4> Total Records: <%= @users.count %></h4>
+</div>    
 
+<div style="float:right;">
+	<%= link_to 'Search', user_search_box_path(true, model_class, @search_fields.join(',')), :remote => true, :class => 'btn btn-primary' %>&nbsp;
+</div>	
+
+<div id="div_update_search"></div>
+
+<div id="div_update">
+	<%= render "fetchAll" %>
+</div>
