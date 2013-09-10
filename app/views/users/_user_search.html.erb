@@ -1,0 +1,31 @@
+<script type="text/javascript">
+	$(document).ready(function() {
+	  $('.btn').click (function() {
+	    $("#spinner").show();
+	  });
+	});
+</script>
+<% red_url = users_path(:users => true) %>
+
+<%= form_for @users, :url => users_path, :method => "get", :remote => true, :html => { :class => 'form-horizontal' } do |f| %>
+  <fieldset>
+    <legend></legend>		
+
+ 		<% @params_arr.each do |p| %>
+	    <div class="control-group">
+	      <%= f.label p.capitalize, :class => 'control-label' %>
+	      <div class="controls">
+	      	<% model_name = params[:model].downcase %>
+	        <%= f.text_field p, :value => @users[p], :class => 'text_field' %>
+	      </div>
+	    </div>
+  	<% end %>   		
+   
+    <div class="controls">
+      <%= f.submit t("general.search"), :class => 'btn btn-primary', :id => 'search_button_id' %>
+      <span data-no-turbolink><%= link_to 'Cancel', user_search_box_path(false, params[:model], true), :class => 'btn', :remote => true %></span>
+    </div>
+    
+  </fieldset>
+
+<% end %>

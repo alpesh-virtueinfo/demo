@@ -1,0 +1,40 @@
+<script type="text/javascript">
+	$(document).ready(function() {
+	  $('.btn').click (function() {
+	    $("#spinner").show();
+	  });
+	});
+</script>
+<% red_url = users_path(:users => true) %>
+
+<%= form_for @users, :url => red_url, :method => "get", :remote => true, :html => { :class => 'form-horizontal' } do |f| %>
+
+<table width="100%">
+	<tr>		
+ 		<% @params_arr.each do |p| %>
+	 		<td style="width:300px;">
+		    <div class="">
+		      <div class="">
+		      	
+		        <%= f.text_field p, :value => @users[p], :class => 'text_field', :placeholder => p.capitalize %>
+		      </div>
+		    </div>
+		  </td>  
+  	<% end %> 
+  		<td style="width:300px;">
+		    <div class="">
+		      <div class="panel">
+		        <%= text_field_tag 'location', "", :class => 'text_field', :id => "target", :placeholder => "Location" %>
+		      </div>
+		      <div id="map-canvas"></div>
+		    </div>
+		  </td>
+		  <td style="width:300px;">
+				<%= f.submit t("general.search"), :class => 'btn btn-primary', :id => 'search_button_id' %>
+		  </td>    	
+  </tr> 
+</table>  
+
+
+<% end %>
+
