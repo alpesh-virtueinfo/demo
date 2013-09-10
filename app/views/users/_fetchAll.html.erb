@@ -1,0 +1,26 @@
+<table class="table table-striped" border="0">
+     
+  <tr>
+    <th width="20%"><%= sortable "first_name", t("general.first_name") %></th>
+    <th width="20%"><%= sortable "last_name", t("general.last_name") %></th>
+    <th width="20%"><%= sortable "login", t("general.username") %></th>
+    <th width="20%"><%= sortable "email", t("general.email") %></th>
+    <th width="20%" colspan="3">&nbsp;</th>
+  </tr>
+
+  <% @users.each do |user| %>
+    <tr>
+      <td><%= user.first_name %></td>
+      <td><%= user.last_name %></td>
+      <td><%= user.login %></td>
+      <td><%= user.email %></td>
+      <td><%= link_to "Show", user %></td>
+      <td><%= link_to "Edit", edit_user_path(user) %></td>
+      <td><%= link_to "Delete", user_path(user), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+  <% end %>
+
+</table>
+<div class="fRight" style="text-align:right;">
+    <%= will_paginate @users %>
+</div>	
